@@ -11,7 +11,7 @@ layout: default
 		{% for article in site.categories.articles %}
 			<li>
 			
-				<a href="{{ site.baseurl }}{{ article.url }}"><h2>{{ article.title }}</h2></a>
+				<a href="{{ article.url }}"><h2>{{ article.title }}</h2></a>
 				<p>{{ article.meta }}</p>
 				<span>Written {{ article.date | date: '%B %d, %Y' }} by <a href="{{ article.author_page }}" target="_blank">{{ article.author }}</a></span>
 			</li>
