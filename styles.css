@@ -1,0 +1,122 @@
+html, body{
+	margin: 0;
+	padding: 0;
+}
+html{
+	font-size: 1.5em;
+	font-family: 'sans-serif';
+   	 
+}
+.home-background{
+	width: 100%;
+	height: 14rem;
+	background-image: url("pattern5.png");
+	background-size: cover;
+	background-position: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+h1{
+	margin: 0;
+}
+
+.home-background > h1{
+	color: white;
+	font-size: 4rem;
+}
+
+.container{
+	max-width: 40rem;
+	margin: 0 auto;
+	padding: 0 1rem;
+}
+
+.list-articles{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	margin-top: 3rem;
+	margin-bottom: 3rem;
+}
+
+.list-articles > li{
+	border-bottom: 1px solid #bababa;
+	padding: 1rem;
+	/*font-family: sans-serif;*/
+}
+
+.list-articles > li > a > h2{
+	font-size: 1rem;
+	line-height: 2rem;
+	margin: 0;
+	/*color: #333;*/
+}
+
+.list-articles > li > p{
+	font-size: 0.75rem;
+	line-height: 1rem;
+	color: #272727;
+	margin: 0;
+	margin-top: 0.5rem;
+}
+
+.list-articles > li > span{
+	font-size: 0.75rem;
+	display: block;
+	line-height: 1rem;
+	color: #979797;
+	margin: 0;
+	margin-top: 1rem;
+}
+
+.list-articles > li > a{
+	text-decoration: none;
+	color: #E47B47;
+}
+
+article > h1{
+	font-size: 1.7rem;
+	line-height: 2rem;
+	margin: 0;
+	margin-top: 1rem;
+	padding: 0;
+	color: #333;
+	margin-bottom: 0.5rem;
+}
+
+article > p{
+	font-size: 0.75rem;
+	line-height: 1rem;
+	margin-top: 1rem;
+	padding: 0;
+	color: #333;
+}
+
+.article-info{
+	margin-bottom: 2rem;
+}
+
+.article-info > a{
+	text-decoration: none;
+	color: #E47B47;
+}
+
+.article-info > time{
+	color: #bababa;
+}
+
+nav > a{
+	text-decoration: none;
+	color: #E47B47;
+	display: block;
+	line-height: 3rem;
+	font-size: 1rem
+}
+
+nav{
+	/*margin-top: 1rem;*/
+	margin-bottom: 2rem;
+	border-bottom: 1px solid #bababa;
+}
