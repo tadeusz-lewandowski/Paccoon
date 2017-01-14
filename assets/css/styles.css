@@ -74,6 +74,7 @@ h1{
 .list-articles > li > a{
 	text-decoration: none;
 	color: #E47B47;
+	display: block;
 }
 
 article > h1{
