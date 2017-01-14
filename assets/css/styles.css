@@ -1,10 +1,27 @@
+
+@font-face {
+	font-family: FiraSans;
+	src: url("../fonts/FiraSans-Regular.otf") format("opentype");
+}
+
+@font-face {
+	font-family: FiraSansBook;
+	src: url("../fonts/FiraSans-Book.otf") format("opentype");
+}
+
+@font-face {
+	font-family: NotoSans;
+	src: url("../fonts/NotoSans-Regular.ttf") format("opentype");
+}
+
 html, body{
 	margin: 0;
 	padding: 0;
 }
+
 html{
 	font-size: 1.5em;
-	font-family: 'sans-serif';
+	font-family: 'FiraSans';
    	 
 }
 .home-background{
@@ -22,7 +39,12 @@ h1{
 	margin: 0;
 }
 
+p{
+	font-family: FiraSansBook;
+}
+
 .home-background > h1{
+	/*font-family: NotoSans;*/
 	color: white;
 	font-size: 4rem;
 }
