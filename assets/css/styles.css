@@ -44,7 +44,7 @@ p{
 }
 
 .home-background > h1{
-	/*font-family: NotoSans;*/
+	font-family: NotoSans;
 	color: white;
 	font-size: 4rem;
 }
@@ -82,7 +82,7 @@ p{
 }
 
 .list-articles > li > p{
-	font-size: 0.75rem;
+	font-size: 0.8rem;
 	line-height: 1rem;
 	color: #272727;
 	margin: 0;
@@ -90,7 +90,7 @@ p{
 }
 
 .list-articles > li > span{
-	font-size: 0.75rem;
+	font-size: 0.8rem;
 	display: block;
 	line-height: 1rem;
 	color: #979797;
@@ -115,7 +115,7 @@ article > h1{
 }
 
 article > p{
-	font-size: 0.75rem;
+	font-size: 0.8rem;
 	line-height: 1rem;
 	margin-top: 1rem;
 	padding: 0;
