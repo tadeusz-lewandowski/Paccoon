@@ -24,6 +24,11 @@ html{
 	font-family: 'FiraSans';
    	 
 }
+
+body{
+	overflow-x: hidden;
+}
+
 .home-background{
 	width: 100%;
 	height: 14rem;
