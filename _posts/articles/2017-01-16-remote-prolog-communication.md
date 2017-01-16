@@ -19,6 +19,7 @@ Let's begin with writing some facts about the weather.
 * if some day will be windy and rainy then this will be cloudy day
 
 We can code this facts in Prolog like this
+
 ``` prolog
 sunny_day(today).
 windy_day(tomorrow).
@@ -27,15 +28,18 @@ rainy_day(tomorrow).
 cloudy_day(X) :- windy_day(X), rainy_day(X).
 
 ```
+
 Save this in the file *knowledge.pl*
 Ok, now Prolog knows some facts about the weather! The last line may be a bit confusing. You must read this like: the day will be cloudy **if** the day will be windy **and** rainy. The uppercased X means a day - it will be explained in the next step.
 
 Now we can ask prolog some questions. If you have installed swi-prolog, open terminal (in Linux) and go to the place where you created your knowledge base. Run Prolog program with one argument - name of your knowledge base.
+
 ``` bash
 prolog knowledge.pl
 ```
 
 This command runs Prolog and loads knowledge base automatically. Now you can give Prolog some questions! Check if today we'll be sunny day.
+
 ```
 ?- sunny_day(today).
 ```
