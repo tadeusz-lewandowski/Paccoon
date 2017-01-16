@@ -76,9 +76,18 @@ p{
 	/*color: #333;*/
 }
 
+.list-articles > li > a:hover{
+	color: #B43D00;
+}
+
+
 .list-articles > li > span > a{
 	text-decoration: none;
 	color: #E47B47;
+}
+
+.list-articles > li > span > a:hover{
+	color: #B43D00;
 }
 
 .list-articles > li > p{
@@ -136,6 +145,16 @@ article > ul{
 	color: #333;
 }
 
+article a{
+	text-decoration: none;
+	color: #E47B47;
+	display: block;
+}
+
+article a:hover{
+	color: #B43D00;
+}
+
 .article-info{
 	margin-bottom: 2rem;
 }
@@ -165,7 +184,7 @@ nav{
 
 
 
-
+/*highlight code library*/
 
 .highlight  { background: #ffffff; }
 .highlight .c { color: #999988; font-style: italic } /* Comment */
