@@ -13,6 +13,7 @@ Recently I got a very interesting task at the university - use your phone to com
 
 In Prolog we write **knowledge base** (facts and relations) - and **queries** (questions to this knowledge base).
 Let's begin with writing some facts about the weather.
+
 * today will be sunny day
 * tomorrow will be windy and rainy day
 * if some day will be windy and rainy then this will be cloudy day
