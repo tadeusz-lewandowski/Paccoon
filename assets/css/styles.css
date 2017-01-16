@@ -26,7 +26,7 @@ html{
 }
 
 body{
-	overflow-x: hidden;
+	/*overflow-x: hidden;*/
 }
 
 .home-background{
@@ -187,7 +187,9 @@ nav{
 	border-bottom: 1px solid #bababa;
 }
 
-
+pre {
+    white-space: pre-wrap;
+}
 
 /*highlight code library*/
 
