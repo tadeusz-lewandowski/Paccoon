@@ -163,16 +163,16 @@ Regular expressions will check whether our question match any **pattern** and if
 
 ``` javascript
 app.get("/api/anwser/:question", function(req, res){
-    var question = req.params.question;
-    
+    var question = req.params.question.toLowerCase();
+
     if(/^.* weather .*/.test(question)){
         var splitted = question.split(" ");
         var weather = splitted[0];
         var day = splitted[2];
-        
+
         var prologQuery = "";
         if(weather == "cloudy"){
-            prologQuery = "cloudy_day(" + day + ")"; 
+            prologQuery = "cloudy_day(" + day + ")";
         } else if(weather == "sunny"){
             prologQuery = "sunny_day(" + day + ")";
         } else if(weather == "windy"){
@@ -180,13 +180,13 @@ app.get("/api/anwser/:question", function(req, res){
         } else if(weather == "rainy"){
             prologQuery = "rainy_day(" + day + ")";
         }
-        
+
         if(!prologQuery.length){
             res.send("I don't understand");
         } else{
             // here we need prolog
         }
-        
+
     } else{
         res.send("I don't understand");
     }
@@ -218,7 +218,7 @@ var Prolog = require('jsprolog');
 ```
 
 Ok, we have Prolog object. If you remember we need knowledge base as well.
-*jsprolog* can use common string variable that contains our base. 
+*jsprolog* can use common string variable that contains our base.
 
 See how to set knowledge base:
 
@@ -247,15 +247,15 @@ Come back to question parse. Now we can easly gives queries to Prolog object and
 ``` javascript
 // ...
 app.get("/api/anwser/:question", function(req, res){
-    var question = req.params.question;
+    var question = req.params.question.toLowerCase();
     if(/^.* weather .*/.test(question)){
         var splitted = question.split(" ");
         var weather = splitted[0];
         var day = splitted[2];
-        
+
         var prologQuery = "";
         if(weather == "cloudy"){
-            prologQuery = "cloudy_day(" + day + ")."; 
+            prologQuery = "cloudy_day(" + day + ").";
         } else if(weather == "sunny"){
             prologQuery = "sunny_day(" + day + ").";
         } else if(weather == "windy"){
@@ -263,7 +263,7 @@ app.get("/api/anwser/:question", function(req, res){
         } else if(weather == "rainy"){
             prologQuery = "rainy_day(" + day + ").";
         }
-        
+
         if(!prologQuery.length){
             res.send("I don't understand");
         } else{
@@ -276,7 +276,7 @@ app.get("/api/anwser/:question", function(req, res){
             // return the next result of prolog query
             res.send(iter.next());
         }
-        
+
     } else{
         res.send("I don't understand");
     }
@@ -311,15 +311,15 @@ app.get("/", function (req, res) {
 });
 // send user question on /api/anwser/
 app.get("/api/anwser/:question", function(req, res){
-    var question = req.params.question;
+    var question = req.params.question.toLowerCase();
     if(/^.* weather .*/.test(question)){
         var splitted = question.split(" ");
         var weather = splitted[0];
         var day = splitted[2];
-        
+
         var prologQuery = "";
         if(weather == "cloudy"){
-            prologQuery = "cloudy_day(" + day + ")."; 
+            prologQuery = "cloudy_day(" + day + ").";
         } else if(weather == "sunny"){
             prologQuery = "sunny_day(" + day + ").";
         } else if(weather == "windy"){
@@ -327,7 +327,7 @@ app.get("/api/anwser/:question", function(req, res){
         } else if(weather == "rainy"){
             prologQuery = "rainy_day(" + day + ").";
         }
-        
+
         if(!prologQuery.length){
             res.send("I don't understand");
         } else{
@@ -340,7 +340,7 @@ app.get("/api/anwser/:question", function(req, res){
             // return the next result of prolog query
             res.send(iter.next());
         }
-        
+
     } else{
         res.send("I don't understand");
     }
@@ -356,7 +356,7 @@ app.listen(3000, function () {
 
 The server gets requests via http and sends responses via http. It means that you can write client side app in any environment - Android studio, Xcode, Xamarin and many others because we don't send html templates. It's very flexible and you can write many clients for this one server (remember about cross origin requests, Node has library for that as well - *cors*).
 
-I decided to use mobile browser as client side app. 
+I decided to use mobile browser as client side app.
 
 ## Preparing server for sending html
 
@@ -395,7 +395,7 @@ Oue goal is to send questions by speeking. First, lets create basic html templat
     <h1>Click on page to speek</h1>
 
     <script>
-        
+
     </script>
 </body>
 </html>
@@ -423,7 +423,7 @@ Start with simply click event on body:
 
 ``` javascript
 document.addEventListener("click", function(){
-    
+
 });
 ```
 Chrome browser gives us **webkitSpeechRecognition** api for speech recognition. Speech recognition object has some interesting events - result and speech end. The first one is the most important because when we have results from recognition we want to send this to server. Then we use qwest with *get request*. Lets code that:
@@ -496,9 +496,9 @@ Now you can talk to the server! Just tap/click on screen and start talking. You 
 
 ## Conclusion
 
-That was a very cool task to do. 
+That was a very cool task to do.
 This is a very basic version of communication between mobile devices and Prolog. We created Node.js server that can respond to any devices that use http protocol and even send html file to browsers. Server has built-in Prolog implementation.  
-Extend the code with more complex Prolog knowledge base, use better parser and have fun. 
+Extend the code with more complex Prolog knowledge base, use better parser and have fun.
 If you have questions or you want to show your project to me, write at
 tadeusz.m.lewandowski@gmail.com
 
