@@ -504,7 +504,7 @@ tadeusz.m.lewandowski@gmail.com
 
 Thanks for reading
 
-Special thanks to Julia for help with english grammar
+Special thanks to **Julia** for help with english grammar
 
 Knowledge source:
 

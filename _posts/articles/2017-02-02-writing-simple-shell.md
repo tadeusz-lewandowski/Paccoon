@@ -620,7 +620,7 @@ If you have any question or problems, don't be shy to write me at tadeusz.m.lewa
 
 Thanks for reading
 
-Special thanks to Thompson for help with english grammar
+Special thanks to **Thompson** for help with english grammar
 
 Sources:
 
