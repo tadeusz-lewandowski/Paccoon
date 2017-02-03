@@ -504,6 +504,8 @@ tadeusz.m.lewandowski@gmail.com
 
 Thanks for reading
 
+Special thanks to Julia for help with english grammar
+
 Knowledge source:
 
 [Prolog basics](http://lpn.swi-prolog.org/lpnpage.php?pagetype=html&pageid=lpn-htmlch1)

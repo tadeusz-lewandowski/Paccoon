@@ -7,16 +7,16 @@ author: Tadeusz Lewandowski
 author_page: https://github.com/tadeusz-lewandowski
 ---
 
-In this semester at university I had a classes of operating systems. We had some basics of bash and C language. It inspired me to do something more with C language and I decided to create a very simple shell that can change directory, run simple programs from */bin* and be able to exit.
+This semester I've had Operating Systems lecture at my university. We've learned basics of bash and C language. It inspired me to do something more with C language and I decided to create a very simple shell that can change working directory, run simple programs from */bin* and be able to exit.
 Let's code that!
 
 ## Project structure
 
 
-I named my project *nekoshell*. Create */lib* directory inside your project. In */lib* create */sources* and */headers*.
+I named the project *nekoshell*. Create */lib* directory. In */lib* create */sources* and */headers*.
 
-* */sources* contains source files with functions definitions. 
-* */headers* contains header files with functions declarations.
+* */sources* contains source files with function definitions. 
+* */headers* contains header files with function declarations.
 
 *project structure tree*
 
@@ -30,13 +30,13 @@ I named my project *nekoshell*. Create */lib* directory inside your project. In 
 |  -- /headers
 ```
 
-We need to create three important files:
+We have to create 3 important files:
 
-* main.c - runs command listening loop.
+* main.c - command listening loop.
 * nekoshell.c - all functions of shell.
-* nekoshell.h - declarations of shell functions
+* nekoshell.h - declarations of shell functions.
 
-Look at the scheme below where to place this files.
+Scheme below describes project filesystem.
 
 *project structure tree*
 
@@ -58,7 +58,7 @@ Look at the scheme below where to place this files.
 
 ## Makefile
 
-It may be very hard to compile this project with one long *gcc* command. *Make* program is comfortable way to build projects.
+It may be very hard to compile this project with one long *gcc* command. *Make* program is a way more comfortable to build projects.
 
 Create makefile in */nekoshell*
 
@@ -82,7 +82,7 @@ Create makefile in */nekoshell*
 |  |  -- nekoshell.c
 ```
 
-Our strategy is to create two object files - *nekoshell.o* and *main.o* and after that - create one executable file *nekoshell*. We want to separate creating of object files because we don't need to rebuild all project with every little change. When we change *nekoshell.c* and this is the only change in project, *nekoshell.o* will be created but *make* doesn't recreate *main.o* because there is no changes in source file.
+Our goal is to create two object files - *nekoshell.o* and *main.o* . After that - create one executable file *nekoshell*. We don't need to rebuild all files with every little change, so we'll seperate creation of object files. When we change *nekoshell.c* and this is the only change in project, *nekoshell.o* will be created but *make* won't recreate *main.o* because there was no change in source file.
 
 *makefile*
 
@@ -97,13 +97,13 @@ nekoshell.o: ./lib/sources/nekoshell.c ./lib/headers/nekoshell.h
 	gcc -c ./lib/sources/nekoshell.c
 ```
 
-See whats going on here:
+Let's see what's going on here:
 
-* *nekoshell* executable file depends on *main.o* and *nekoshell.o*
-* *main.o* depends on *main.c*
-* *nekoshell.o* depends on *nekoshell.c* and *nekoshell.h*
+* *nekoshell* executable file compiled from *main.o* and *nekoshell.o*
+* *main.o* created from *main.c*
+* *nekoshell.o* created from *nekoshell.c* and *nekoshell.h*
 
-We can add a little improvement here. Create variables for paths.
+We'll add a little improvement here - create path variables.
 
 *makefile*
 
@@ -123,15 +123,15 @@ nekoshell.o: $(sources)/nekoshell.c $(headers)/nekoshell.h
 
 ## Command prompt
 
-What we see first when *bash* program starts? The command prompt! We start coding this element first.
+What we always see when *bash* program starts? The command prompt! We'll start with this element. It's a nice touch.
 
-We want to display a name of the shell and current working directory path as our command prompt. It looks like this:
+We want to display name of the shell and current working directory path in our command prompt. It'll look like this:
 
 ``` bash
 nekoshell:[/home/tadeusz/Documents/C/nekoshell]>>
 ```
 
-```<unistd.h/>``` gives as *getcwd* function that returns current working directory path. We need *printf* function from ```<stdio.h>``` as well for print command prompt. How to mix it in one function:
+```<unistd.h/>``` contains *getcwd* function that return current working directory path. Also we need *printf* function from ```<stdio.h>``` to print command prompt. Next we have to mix it into one function.
 
 *nekoshell.c*
 
@@ -149,13 +149,13 @@ void writePrompt(){
 }
 ```
 
-*path* variable stores current working directory path and have 256 bytes of length (size is injected by preprocessor). You can increase this size if you want.
+*path* variable containing current working directory path and have 256 bytes (size is injected in preprocessing). You can adjust its size if needed.
 
-*getcwd* puts current working directory path in *path* variable (max 256 bytes (because of preprocessor))
+*getcwd* puts current working directory path in *path* variable (max 256 bytes in my case (size of PATH_BUFF))
 
-on the end we just print this by *printf* function. Notice, that we don't create *'\n'* character at the end of string because we want to listen commands in one line just after command prompt.
+In the end we just print this with *printf* function. Notice, that we don't add *'\n'* character at the end of string because we want user command in one line with prompt.
 
-Now we must put function declaration in *nekoshell.h* and include it in *main.c*
+Now we put function declaration in *nekoshell.h* and include it in *main.c*
 
 *nekoshell.h*
 
@@ -176,11 +176,11 @@ int main(){
 }
 ```
 
-Now build the project via *make* command and execute file by *./nekoshell* (all in linux terminal). If everythink is ok, the command prompt will be printed.
+Build the project via *make* command and execute file with *./nekoshell* (all in linux terminal). If everything's ok, the command prompt will be printed.
 
-## Listen for commands
+## Command listening
 
-Command prompt is useless if we don't listen and parse commands. Let's code *listenCommand* function!
+Command prompt is useless if we don't parse commands. Let's code *listenCommand* function!
 
 
 *nekoshell.c*
@@ -198,11 +198,11 @@ void listenCommand(){
 }
 ```
 
-Firstly, we write command prompt and after that we use *getline* function declared in ```<stdio.h>``` for getting user input.
+First, we print command prompt and after that we use *getline* function declared in ```<stdio.h>``` to aquire keyboard input.
 
-If you set command buffer to NULL and size (*len* variable) to 0 the *getline* automatically alloc memory for the line. Function returns amount of the read bytes.
+If you set command buffer to NULL and size of *len* variable to 0, the *getline* will automatically alloc memory for the line. Function returns amount of bytes read.
 
-Write a simple *while* loop for listening commands in *mai.c*
+Next, write a simple *while* loop for command listening in *main.c*
 
 *main.c*
 
@@ -219,11 +219,11 @@ int main(){
 }
 ```
 
-Yeach, nekoshell is reading commands! Its time to create some functionalities of the shell.
+Yeah, nekoshell is finally reading commands! Let's make this shell little more functional.
 
-## Clearing command from unwanted endline char
+## Clearing command string from unwanted endline char
 
-We need to remove endline character (*'\n'*) because it breaks our last argument (for example if you type *cd dir* - the last argument will be *dir\n* instead of *dir*). Create function for that:
+We need to remove endline character (*'\n'*) because it'll break our last argument (for example if you type *cd dir* - the last argument will be *dir\n* instead of *dir*). Function for this:
 
 *nekoshell.c*
 
@@ -238,9 +238,9 @@ void clearCommand(char *command){
 }
 ```
 
-The function takes pointer to command and replace last character with sign of end of string.
+This function takes pointer to command string in which last character need to be replaced with end of a string (\0) sign.
 
-Create function declaration in *nekoshell.h* as well
+Create function declaration in *nekoshell.h* as well.
 
 *nekoshell.h*
 
@@ -252,7 +252,7 @@ void clearCommand(char *command);
 
 ## *cd* command recognition
 
-We want to handle *cd* command. Before we create proper function for that we need to check if read bytes of line is greater than 1 (because we count new line character), clear this command and split this into arguments. Let's code that
+We want to handle *cd* command. Before we create proper function we need to check if number of aquired bytes is greater than 1 (including new line character), clear this command and split into arguments. Let's code that.
 
 *nekoshell.c*
 
@@ -264,7 +264,7 @@ We want to handle *cd* command. Before we create proper function for that we nee
 void listenCommand(){
 	// (...)
 	if(read > 1){
-			// clear command (remove new line if exist)
+			// clear command (remove newline if there is one)
 			clearCommand(command);
 
 			char *commandArguments;
@@ -272,18 +272,18 @@ void listenCommand(){
 	}
 }
 ```
-We need to include ```<string.h>``` because we use *strtok* function as splitting mechanism.
+We need to include ```<string.h>``` because we need *strtok* function as splitting mechanism.
 
-*strtok* needs two arguments:
+*strtok* has two arguments:
 
 * string to parse
 * separator
 
-*strtok* returns next arguments with every call (if you want to use strtok again on the same string, pass NULL as the first argument. You'll see in the next example how to use strtok again).
+*strtok* returns next arguments with every call (if you want to use strtok twice on the same string, pass NULL as the first argument. You'll see in the next example how to use strtok multiple times).
 
-The *commandArguments* stores first argument of our command.
+The *commandArguments* contains first argument of our command.
 
-We want to check, if this string is equal "cd". If its true, use *strtok* again and take an argument for *cd*.
+We want to check, if this string is equal to "cd". If it's true, use *strtok* again and take an argument of *cd*.
 
 *nekoshell.c*
 
@@ -308,11 +308,11 @@ void listenCommand(){
 }
 ```
 
-*strcmp* compares two strings and returns 0 if everything is ok. If the first argument is equal "cd" then we take another part of command by calling *strtok* again (but with NULL as first argument). Next we call our custom *changeDirectory* function and return from listenCommand (because we are going to write other functions below *cd* handling).
+*strcmp* compares two strings. If the first argument is equal to "cd" (0 returned) then we take another part of command by calling *strtok* again (but with NULL as first argument). Next we call our custom *changeDirectory* function and return from listenCommand (because we are going to write other functions below *cd* handler).
 
 ## Changing directory
 
-Changing current directory is very easy because ```<unistd.h>``` gives as *chdir* that changes current working directory to directory specified in path argument. Its good idea to check if *path* isn't null and handle *cd* errors. How to code this:
+Changing current directory is very easy because ```<unistd.h>``` gives us *chdir* function that changes current working directory to directory specified in path argument. It's a good idea to check if *path* isn't null and handle *cd* errors. How to code this:
 
 *nekoshell.c*
 
@@ -330,13 +330,13 @@ void changeDirectory(char *path){
 // (...)
 ```
 
-*chdir* returns -1 if something went wrong. We handle this status and print last error encountered during system call if status is equal -1
+*chdir* returns -1 if something went wrong. We handle this case printing last error with system call.
 
-Build your program and have fun with changing directory!
+Build your program and have fun changing directory!
 
-## Exit from shell and executing programs
+## Exit from shell
 
-Second functionality is exit from shell. Its only one *if* statement with *exit* function inside.
+Second functionality - exit from shell. It is only one *if* statement with *exit* function inside.
 
 *nekoshell.c*
 
@@ -354,7 +354,7 @@ void listenCommand(){
 // (...)
 ```
 
-The last functionality is executing programs from */bin*
+The last functionality - executing programs from */bin*
 
 The algorithm will be:
 
@@ -383,11 +383,11 @@ void listenCommand(){
 // (...)
 ```
 
-We create *fullPath* array for strings concatentation. We must copy "/bin" string to this array first and after that concat *fullPath* with *appName* (appName stores the name of app to execute). 
+We create *fullPath* array for strings concatentation. We copy "/bin" string to this array and after that concat *fullPath* with *appName* (appName stores the name of app to execute). 
 
-The result may be for example */bin/sleep* (if appName is "sleep").
+The result may be: */bin/sleep* (if appName is "sleep").
 
-Next step is to duplicate process by *fork* function and execute program in child process. Let's start with creating new process and waiting for the results.
+Next step is to duplicate process by *fork* function and execute program in child process. Let's start with creating new process and waiting for results.
 
 *nekoshell.c*
 
@@ -416,13 +416,13 @@ void listenCommand(){
 // (...)
 ```
 
-When *fork* is called, our app is "splitted" on two parts. In one we handle child process and second we handle parent process.
+When *fork* is called, our app is "splitted" into two parts. In one we handle child process and in the second we handle parent process.
 
-Both of processes will check if statement. But the results will be different because *pid* variable is equal 0 in child process (fork returns 0 for child process). In parent process we are waiting for changes in child process and save exit status in *status* variable.
+Both of processes will check its if statement. But the results will be different because *pid* variable is equal to 0 in child process (fork returns 0 for child process). In parent process we are waiting for changes in child process and save exit status in *status* variable.
 
-*wait* is declared in ```<sys/types.h>``` and ```<sys/wait.h>``` so don't forget to add it on the top.
+*wait* is declared in ```<sys/types.h>``` and ```<sys/wait.h>``` so don't forget to add it on top.
 
-Now we have to replace child process with app defined by user in command. I recommand to use *execvp* function because you can pass array of arguments to the program that you want to execute. See how to do it:
+Now we have to replace child process with app requested by user. I recommand use of *execvp* function because you can pass array of arguments to the program that you want to execute. Let's see how to do it:
 
 *nekoshell.c*
 
@@ -461,9 +461,9 @@ void listenCommand(){
 // (...)
 ```
 
-The *args* is an array of pointers that will be containing arguments for executed program. The first string is the name of app. Next we load all arguments (limited by MAX_ARGS preprocessor directive).
+The *args* is an array of pointers that will contain arguments for executed program. The first string is the name of the app. Next we load all arguments (limited by MAX_ARGS preprocessor definition).
 
-*args[i] = 0* ends the list of arguments. Its required for proper working.
+*args[i] = 0* ends the list of arguments. It's required for proper work.
 
 If *execvp* can't execute program then we end process with 1 exit status.
 
@@ -613,18 +613,25 @@ void listenCommand(){
 }
 ```
 
-## Conclusion
+## Summary
 
-Writting shell was cool experience! I encourage you to extend this code with more functions and create something amazing!
-If you have any question or problem, don't be shy and write to me at tadeusz.m.lewandowski@gmail.com
+Writing command shell was a cool experience! I encourage you to extend this code with more functions and to create something amazing!
+If you have any question or problems, don't be shy to write me at tadeusz.m.lewandowski@gmail.com
 
 Thanks for reading
 
-Knowledge source:
+Special thanks to Thompson for help with english grammar
+
+Sources:
 
 [http://bprzybylski.github.io/DSOP/cw09.html](http://bprzybylski.github.io/DSOP/cw09.html)
 [http://bprzybylski.github.io/DSOP/cw10.html](http://bprzybylski.github.io/DSOP/cw10.html)
 [http://bprzybylski.github.io/DSOP/cw11.html](http://bprzybylski.github.io/DSOP/cw11.html)
+
+
+
+
+
 
 
 
