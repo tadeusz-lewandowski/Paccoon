@@ -140,8 +140,8 @@ var app = express();
 app.get("/", function (req, res) {
   res.send("Hello")
 });
-// send user question on /api/anwser/
-app.get("/api/anwser/:question", function(req, res){
+// send user question on /api/answer/
+app.get("/api/answer/:question", function(req, res){
     res.send(req.params.question);
 });
 
@@ -152,7 +152,7 @@ app.listen(3000, function () {
 
 ```
 
-When we type in browser *localhost:3000/api/anwser/mysentence* the server responds with "mysentence". It means that server has no problem receiving our question.
+When we type in browser *localhost:3000/api/answer/mysentence* the server responds with "mysentence". It means that server has no problem receiving our question.
 
 ## Simply parser
 In next step we write *question understanding* and mechanism of creating Prolog queries. Weather knowledge base is not complicated so I used only **regular expressions**. For more complex sentence parsing use Node.js libraries with language parsers.
@@ -162,7 +162,7 @@ Regular expressions will check whether our question match any **pattern** and if
 *in question route*
 
 ``` javascript
-app.get("/api/anwser/:question", function(req, res){
+app.get("/api/answer/:question", function(req, res){
     var question = req.params.question.toLowerCase();
 
     if(/^.* weather .*/.test(question)){
@@ -242,11 +242,11 @@ var db = Prolog.default.Parser.parse(knowledgeString);
 ```
 Come back to question parse. Now we can easly gives queries to Prolog object and show results:
 
-*index.js - /api/anwser/:question method*
+*index.js - /api/answer/:question method*
 
 ``` javascript
 // ...
-app.get("/api/anwser/:question", function(req, res){
+app.get("/api/answer/:question", function(req, res){
     var question = req.params.question.toLowerCase();
     if(/^.* weather .*/.test(question)){
         var splitted = question.split(" ");
@@ -309,8 +309,8 @@ var db = Prolog.default.Parser.parse(knowledgeString);
 app.get("/", function (req, res) {
   res.send("Hello")
 });
-// send user question on /api/anwser/
-app.get("/api/anwser/:question", function(req, res){
+// send user question on /api/answer/
+app.get("/api/answer/:question", function(req, res){
     var question = req.params.question.toLowerCase();
     if(/^.* weather .*/.test(question)){
         var splitted = question.split(" ");
@@ -435,8 +435,8 @@ var recognition = new webkitSpeechRecognition();
 recognition.addEventListener("result", function(event){
     var sentence = event.results[0][0].transcript;
     console.log(sentence)
-    // qwest do get request for route /api/anwser/<something>
-    qwest.get(`/api/anwser/${sentence.toString()}`, null, { cache:true })
+    // qwest do get request for route /api/answer/<something>
+    qwest.get(`/api/answer/${sentence.toString()}`, null, { cache:true })
     // do the function when server respond
     .then(function(xhr, response) {
         // display response
@@ -476,7 +476,7 @@ Now you can talk to the server! Just tap/click on screen and start talking. You 
         recognition.addEventListener("result", function(event){
             var sentence = event.results[0][0].transcript;
             console.log(sentence)
-            qwest.get(`/api/anwser/${sentence.toString()}`, null, { cache:true })
+            qwest.get(`/api/answer/${sentence.toString()}`, null, { cache:true })
             .then(function(xhr, response) {
                 alert(response);
             });
