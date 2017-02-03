@@ -150,6 +150,13 @@ article > ul{
 	color: #333;
 }
 
+article > ol{
+	font-size: 0.8rem;
+	line-height: 1rem;
+	
+	color: #333;
+}
+
 article a{
 	text-decoration: none;
 	color: #E47B47;
