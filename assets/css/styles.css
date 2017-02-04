@@ -1,201 +1,204 @@
 
 @font-face {
-	font-family: FiraSans;
-	src: url("../fonts/FiraSans-Regular.otf") format("opentype");
+  font-family: FiraSans;
+  src: url("../fonts/FiraSans-Regular.otf") format("opentype");
 }
 
 @font-face {
-	font-family: FiraSansBook;
-	src: url("../fonts/FiraSans-Book.otf") format("opentype");
+  font-family: FiraSansBook;
+  src: url("../fonts/FiraSans-Book.otf") format("opentype");
 }
 
 @font-face {
-	font-family: NotoSans;
-	src: url("../fonts/NotoSans-Regular.ttf") format("opentype");
+  font-family: NotoSans;
+  src: url("../fonts/NotoSans-Regular.ttf") format("opentype");
 }
 
 html, body{
-	margin: 0;
-	padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 html{
-	font-size: 1.5em;
-	font-family: 'FiraSans';
-   	 
+  font-size: 1.5em;
+  font-family: 'FiraSans';
+     
 }
 
 body{
-	/*overflow-x: hidden;*/
+  /*overflow-x: hidden;*/
 }
 
 .home-background{
-	width: 100%;
-	height: 14rem;
-	background-image: url("../img/pattern5.png");
-	background-size: cover;
-	background-position: center;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+  width: 100%;
+  height: 14rem;
+  background-image: url("../img/pattern5.png");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 h1{
-	margin: 0;
+  margin: 0;
 }
 
 p{
-	font-family: FiraSansBook;
+  font-family: FiraSansBook;
 }
 
 .home-background > h1{
-	font-family: NotoSans;
-	color: white;
-	font-size: 4rem;
+  font-family: NotoSans;
+  color: white;
+  font-size: 4rem;
 }
 
+
+
 .container{
-	max-width: 40rem;
-	margin: 0 auto;
-	padding: 0 1rem;
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .list-articles{
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	margin-top: 3rem;
-	margin-bottom: 3rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
 }
 
 .list-articles > li{
-	border-bottom: 1px solid #bababa;
-	padding: 1rem;
-	/*font-family: sans-serif;*/
+  border-bottom: 1px solid #bababa;
+  padding: 1rem;
+  /*font-family: sans-serif;*/
 }
 
 .list-articles > li > a > h2{
-	font-size: 1rem;
-	line-height: 2rem;
-	margin: 0;
-	/*color: #333;*/
+  font-size: 1rem;
+  line-height: 2rem;
+  margin: 0;
+  /*color: #333;*/
 }
 
 .list-articles > li > a:hover{
-	color: #B43D00;
+  color: #B43D00;
 }
 
 
 .list-articles > li > span > a{
-	text-decoration: none;
-	color: #E47B47;
+  text-decoration: none;
+  color: #E47B47;
 }
 
 .list-articles > li > span > a:hover{
-	color: #B43D00;
+  color: #B43D00;
 }
 
 .list-articles > li > p{
-	font-size: 0.8rem;
-	line-height: 1rem;
-	color: #272727;
-	margin: 0;
-	margin-top: 0.5rem;
+  font-size: 0.8rem;
+  line-height: 1rem;
+  color: #272727;
+  margin: 0;
+  margin-top: 0.5rem;
 }
 
 .list-articles > li > span{
-	font-size: 0.8rem;
-	display: block;
-	line-height: 1rem;
-	color: #979797;
-	margin: 0;
-	margin-top: 1rem;
+  font-size: 0.8rem;
+  display: block;
+  line-height: 1rem;
+  color: #979797;
+  margin: 0;
+  margin-top: 1rem;
 }
 
 .list-articles > li > a{
-	text-decoration: none;
-	color: #E47B47;
-	display: block;
+  text-decoration: none;
+  color: #E47B47;
+  display: block;
 }
 
 article > h1{
-	font-size: 1.7rem;
-	line-height: 2rem;
-	margin: 0;
-	margin-top: 1rem;
-	padding: 0;
-	color: #333;
-	margin-bottom: 0.5rem;
+  font-size: 1.7rem;
+  line-height: 2rem;
+  margin: 0;
+  margin-top: 1rem;
+  padding: 0;
+  color: #333;
+  margin-bottom: 0.5rem;
 }
 
 article > p{
-	font-size: 0.8rem;
-	line-height: 1rem;
-	margin-top: 1rem;
-	padding: 0;
-	color: #333;
+  font-size: 0.8rem;
+  line-height: 1rem;
+  margin-top: 1rem;
+  padding: 0;
+  color: #333;
 }
 
 article > h2{
-	font-size: 1.2rem;
-	line-height: 2rem;
-	padding: 0;
-	color: #333;
+  font-size: 1.2rem;
+  line-height: 2rem;
+  padding: 0;
+  color: #333;
 }
 
 article > ul{
-	font-size: 0.8rem;
-	line-height: 1rem;
-	
-	color: #333;
+  font-size: 0.8rem;
+  line-height: 1rem;
+  
+  color: #333;
 }
 
 article > ol{
-	font-size: 0.8rem;
-	line-height: 1rem;
-	
-	color: #333;
+  font-size: 0.8rem;
+  line-height: 1rem;
+  
+  color: #333;
 }
 
 article a{
-	text-decoration: none;
-	color: #E47B47;
-	display: block;
+  text-decoration: none;
+  color: #E47B47;
+  display: block;
 }
 
 article a:hover{
-	color: #B43D00;
+  color: #B43D00;
 }
 
 .article-info{
-	margin-bottom: 2rem;
+  margin-bottom: 2rem;
 }
 
 .article-info > a{
-	text-decoration: none;
-	color: #E47B47;
+  text-decoration: none;
+  color: #E47B47;
 }
 
 .article-info > span{
-	color: #bababa;
+  color: #bababa;
 }
 
 nav > a{
-	text-decoration: none;
-	color: #E47B47;
-	display: block;
-	line-height: 3rem;
-	font-size: 1rem
+  text-decoration: none;
+  color: #E47B47;
+  display: block;
+  line-height: 3rem;
+  font-size: 1rem
 }
 
 nav{
-	/*margin-top: 1rem;*/
-	margin-bottom: 2rem;
-	border-bottom: 1px solid #bababa;
+  /*margin-top: 1rem;*/
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #bababa;
 }
 
 pre {
-    white-space: pre-wrap;
+    /*white-space: pre-wrap;*/
+    overflow: auto;
 }
 
 .highlight {
@@ -264,3 +267,10 @@ pre {
 .highlight .vg { color: #008080 } /* Name.Variable.Global */
 .highlight .vi { color: #008080 } /* Name.Variable.Instance */
 .highlight .il { color: #009999 } /* Literal.Number.Integer.Long */
+
+
+@media only screen and (max-width: 600px) {
+  .home-background > h1{
+    font-size: 2rem;
+  }
+}
