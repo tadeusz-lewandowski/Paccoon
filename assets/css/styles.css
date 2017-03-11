@@ -22,7 +22,7 @@ html, body{
 html{
   font-size: 1.5em;
   font-family: 'FiraSans';
-     
+
 }
 
 body{
@@ -31,13 +31,17 @@ body{
 
 .home-background{
   width: 100%;
-  height: 14rem;
-  background-image: url("../img/pattern5.png");
+  height: 9rem;
+  /*background-image: url("../img/background4.png");
   background-size: cover;
-  background-position: center;
+  background-position: center;*/
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.home-background > img{
+    opacity: .85;
 }
 
 h1{
@@ -66,7 +70,7 @@ p{
   list-style: none;
   margin: 0;
   padding: 0;
-  margin-top: 3rem;
+  margin-top: 0rem;
   margin-bottom: 3rem;
 }
 
@@ -84,17 +88,17 @@ p{
 }
 
 .list-articles > li > a:hover{
-  color: #B43D00;
+  color: #B72556;
 }
 
 
 .list-articles > li > span > a{
   text-decoration: none;
-  color: #E47B47;
+  color: #F04D84;
 }
 
 .list-articles > li > span > a:hover{
-  color: #B43D00;
+  color: #B72556;
 }
 
 .list-articles > li > p{
@@ -116,7 +120,7 @@ p{
 
 .list-articles > li > a{
   text-decoration: none;
-  color: #E47B47;
+  color: #F04D84;
   display: block;
 }
 
@@ -148,25 +152,25 @@ article > h2{
 article > ul{
   font-size: 0.8rem;
   line-height: 1rem;
-  
+
   color: #333;
 }
 
 article > ol{
   font-size: 0.8rem;
   line-height: 1rem;
-  
+
   color: #333;
 }
 
 article a{
   text-decoration: none;
-  color: #E47B47;
+  color: #F04D84;
   display: block;
 }
 
 article a:hover{
-  color: #B43D00;
+  color: #B72556;
 }
 
 .article-info{
@@ -175,7 +179,7 @@ article a:hover{
 
 .article-info > a{
   text-decoration: none;
-  color: #E47B47;
+  color: #F04D84;
 }
 
 .article-info > span{
@@ -184,7 +188,7 @@ article a:hover{
 
 nav > a{
   text-decoration: none;
-  color: #E47B47;
+  color: #F04D84;
   display: block;
   line-height: 3rem;
   font-size: 1rem
