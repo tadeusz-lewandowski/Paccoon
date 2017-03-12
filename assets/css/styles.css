@@ -17,6 +17,7 @@
 html, body{
   margin: 0;
   padding: 0;
+  height: calc(100% - 4rem);
 }
 
 html{
@@ -28,6 +29,38 @@ html{
 body{
   /*overflow-x: hidden;*/
 }
+
+footer{
+    /*position: absolute;*/
+    /*bottom: 0;*/
+    width: 100%;
+    background: rgba(0, 0, 0, .85);
+    padding-top: .5rem;
+    padding-bottom: 1rem;
+    font-size: 0.65rem;
+    color: white;
+    /*left: 0;*/
+    margin-top: 2rem;
+    height: 6rem;
+}
+
+address{
+    font-style: normal;
+    line-height: 1rem;
+}
+
+address > a{
+    text-decoration: none;
+    color: white;
+}
+
+#wrapper{
+  min-height: 100%;
+  position: relative;
+
+}
+
+
 
 .home-background{
   width: 100%;
